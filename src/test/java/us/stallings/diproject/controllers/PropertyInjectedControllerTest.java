@@ -1,11 +1,8 @@
 package us.stallings.diproject.controllers;
 
-import net.minidev.json.JSONUtil;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import us.stallings.diproject.services.GreetingServiceImpl;
-
-import static org.junit.jupiter.api.Assertions.*;
+import us.stallings.diproject.services.ConstructorGreetingService;
 
 class PropertyInjectedControllerTest {
     PropertyInjectedController controller;
@@ -13,7 +10,7 @@ class PropertyInjectedControllerTest {
     @BeforeEach
     void setUp() {
         controller = new PropertyInjectedController();
-        controller.greetingService = new GreetingServiceImpl();
+        controller.greetingService = new ConstructorGreetingService();
     }
 
     @Test
