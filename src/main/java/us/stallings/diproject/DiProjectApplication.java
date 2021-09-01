@@ -3,10 +3,7 @@ package us.stallings.diproject;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
-import us.stallings.diproject.controllers.ConstructorInjectedController;
-import us.stallings.diproject.controllers.MyController;
-import us.stallings.diproject.controllers.PropertyInjectedController;
-import us.stallings.diproject.controllers.SetterInjectedController;
+import us.stallings.diproject.controllers.*;
 
 @SpringBootApplication
 public class DiProjectApplication {
@@ -14,6 +11,9 @@ public class DiProjectApplication {
     public static void main(String[] args) {
 
         ApplicationContext ctx = SpringApplication.run(DiProjectApplication.class, args);
+
+        I18nController i18nController = (I18nController) ctx.getBean("i18nController");
+        System.out.println(i18nController.sayGreeting());
 
         MyController myController = (MyController) ctx.getBean("myController");
 
