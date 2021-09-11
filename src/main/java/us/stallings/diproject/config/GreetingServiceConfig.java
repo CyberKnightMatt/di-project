@@ -8,9 +8,28 @@ import org.springframework.stereotype.Service;
 import us.stallings.diproject.repositories.EnglishGreetingRepository;
 import us.stallings.diproject.repositories.EnglishGreetingRepositoryImpl;
 import us.stallings.diproject.services.*;
+import us.stallings.pets.PetService;
+import us.stallings.pets.PetServiceFactory;
 
 @Configuration
 public class GreetingServiceConfig {
+
+    @Bean
+    PetServiceFactory petServiceFactory() {
+        return new PetServiceFactory();
+    }
+
+    @Profile({"dog", "default"})
+    @Bean
+    PetService dogPetService(PetServiceFactory petServiceFactory) {
+        return petServiceFactory.getPetService("dog");
+    }
+
+    @Bean
+    PetService catPetService(PetServiceFactory petServiceFactory) {
+        return petServiceFactory.getPetService("cat");
+    }
+
 
     @Bean
     ConstructorGreetingService constructorGreetingService() {
