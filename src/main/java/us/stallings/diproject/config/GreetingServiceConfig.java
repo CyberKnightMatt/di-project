@@ -5,6 +5,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
+import us.stallings.diproject.repositories.EnglishGreetingRepository;
+import us.stallings.diproject.repositories.EnglishGreetingRepositoryImpl;
 import us.stallings.diproject.services.*;
 
 @Configuration
@@ -31,10 +33,15 @@ public class GreetingServiceConfig {
         return new PrimaryGreetingService();
     }
 
+    @Bean
+    EnglishGreetingRepository englishGreetingRepository() {
+        return new EnglishGreetingRepositoryImpl();
+    }
+
     @Profile({"EN", "default"})
     @Bean
-    I18nEnglishGreetingService i18nService() {
-        return new I18nEnglishGreetingService();
+    I18nEnglishGreetingService i18nService(EnglishGreetingRepository englishGreetingRepository) {
+        return new I18nEnglishGreetingService(englishGreetingRepository);
     }
 
     @Profile("ES")
