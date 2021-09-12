@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import us.stallings.diproject.config.DiConfiguration;
+import us.stallings.diproject.config.DiConstructorConfig;
 import us.stallings.diproject.controllers.*;
 import us.stallings.diproject.datasource.FakeDataSource;
 
@@ -49,6 +50,12 @@ public class DiProjectApplication {
         DiConfiguration diConfiguration = (DiConfiguration) ctx.getBean(DiConfiguration.class);
         System.out.println(diConfiguration.getUsername());
         System.out.println(diConfiguration.getPassword());
+        System.out.println(diConfiguration.getJdbcurl());
+
+        System.out.println("----- Constructor Binding");
+        DiConstructorConfig diConstructorConfig = (DiConstructorConfig) ctx.getBean(DiConstructorConfig.class);
+        System.out.println(diConstructorConfig.getUsername());
+        System.out.println(diConstructorConfig.getPassword());
         System.out.println(diConfiguration.getJdbcurl());
     }
 

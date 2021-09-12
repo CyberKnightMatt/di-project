@@ -1,6 +1,7 @@
 package us.stallings.diproject.config;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.*;
 import org.springframework.stereotype.Service;
 import us.stallings.diproject.datasource.FakeDataSource;
@@ -10,6 +11,7 @@ import us.stallings.diproject.services.*;
 import us.stallings.pets.PetService;
 import us.stallings.pets.PetServiceFactory;
 
+@EnableConfigurationProperties(DiConstructorConfig.class)
 @Configuration
 public class GreetingServiceConfig {
 
