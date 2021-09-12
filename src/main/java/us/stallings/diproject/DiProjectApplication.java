@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import us.stallings.diproject.controllers.*;
+import us.stallings.diproject.datasource.FakeDataSource;
 
 @SpringBootApplication
 public class DiProjectApplication {
@@ -36,6 +37,11 @@ public class DiProjectApplication {
         System.out.println("----- Constructor");
         ConstructorInjectedController constructorInjectedController = (ConstructorInjectedController) ctx.getBean("constructorInjectedController");
         System.out.println(constructorInjectedController.getGreeting());
+
+        FakeDataSource fakeDataSource = (FakeDataSource) ctx.getBean(FakeDataSource.class);
+        System.out.println(fakeDataSource.getUsername());
+        System.out.println(fakeDataSource.getPassword());
+        System.out.println(fakeDataSource.getJdbcurl());
     }
 
 }

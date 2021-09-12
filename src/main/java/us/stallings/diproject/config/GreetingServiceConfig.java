@@ -1,18 +1,29 @@
 package us.stallings.diproject.config;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
-import org.springframework.context.annotation.Profile;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.*;
 import org.springframework.stereotype.Service;
+import us.stallings.diproject.datasource.FakeDataSource;
 import us.stallings.diproject.repositories.EnglishGreetingRepository;
 import us.stallings.diproject.repositories.EnglishGreetingRepositoryImpl;
 import us.stallings.diproject.services.*;
 import us.stallings.pets.PetService;
 import us.stallings.pets.PetServiceFactory;
 
+@PropertySource("classpath:datasource.properties")
 @Configuration
 public class GreetingServiceConfig {
+
+    @Bean
+    FakeDataSource fakeDataSource(@Value("${guru.username}") String username,
+                                  @Value("${guru.password}") String password,
+                                  @Value("${guru.jbcurl}") String jdbcurl) {
+        FakeDataSource fakeDataSource = new FakeDataSource();
+        fakeDataSource.setUsername(username);
+        fakeDataSource.setPassword(password);
+        fakeDataSource.setJdbcurl(jdbcurl);
+        return fakeDataSource;
+    }
 
     @Bean
     PetServiceFactory petServiceFactory() {
