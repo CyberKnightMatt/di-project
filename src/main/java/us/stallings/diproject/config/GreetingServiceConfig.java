@@ -14,13 +14,11 @@ import us.stallings.pets.PetServiceFactory;
 public class GreetingServiceConfig {
 
     @Bean
-    FakeDataSource fakeDataSource(@Value("${guru.username}") String username,
-                                  @Value("${guru.password}") String password,
-                                  @Value("${guru.jbcurl}") String jdbcurl) {
+    FakeDataSource fakeDataSource(DiConfiguration diConfiguration) {
         FakeDataSource fakeDataSource = new FakeDataSource();
-        fakeDataSource.setUsername(username);
-        fakeDataSource.setPassword(password);
-        fakeDataSource.setJdbcurl(jdbcurl);
+        fakeDataSource.setUsername(diConfiguration.getUsername());
+        fakeDataSource.setPassword(diConfiguration.getPassword());
+        fakeDataSource.setJdbcurl(diConfiguration.getJdbcurl());
         return fakeDataSource;
     }
 

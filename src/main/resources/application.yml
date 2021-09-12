@@ -7,7 +7,7 @@ spring:
 guru:
   username: YmlUserName
   password: YmlPassword
-  jbcurl: YmlUrlToDb
+  jdbcurl: YmlUrlToDb
 
 ---
 spring:
@@ -15,4 +15,4 @@ spring:
 guru:
   username: YmlProdUserName
   password: YmlProdPassword
-  jbcurl: YmlProdUrlToDb
+  jdbcurl: YmlProdUrlToDb
