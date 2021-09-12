@@ -10,7 +10,6 @@ import us.stallings.diproject.services.*;
 import us.stallings.pets.PetService;
 import us.stallings.pets.PetServiceFactory;
 
-@PropertySource("classpath:datasource.properties")
 @Configuration
 public class GreetingServiceConfig {
 
